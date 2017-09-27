@@ -1,0 +1,37 @@
+C:\Users\y14cg.jnewham\AppData\Local\Temporary Projects\DiceGame\bin\Debug\DiceGame.exe
+C:\Users\y14cg.jnewham\AppData\Local\Temporary Projects\DiceGame\bin\Debug\DiceGame.pdb
+C:\Users\y14cg.jnewham\AppData\Local\Temporary Projects\DiceGame\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\y14cg.jnewham\AppData\Local\Temporary Projects\DiceGame\obj\x86\Debug\DiceGame.Main.resources
+C:\Users\y14cg.jnewham\AppData\Local\Temporary Projects\DiceGame\obj\x86\Debug\DiceGame.Properties.Resources.resources
+C:\Users\y14cg.jnewham\AppData\Local\Temporary Projects\DiceGame\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\y14cg.jnewham\AppData\Local\Temporary Projects\DiceGame\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\y14cg.jnewham\AppData\Local\Temporary Projects\DiceGame\obj\x86\Debug\DiceGame.exe
+C:\Users\y14cg.jnewham\AppData\Local\Temporary Projects\DiceGame\obj\x86\Debug\DiceGame.pdb
+N:\Year 10\Computer Science\DiceGame\DiceGame\obj\x86\Debug\DiceGame.exe
+N:\Year 10\Computer Science\DiceGame\DiceGame\obj\x86\Debug\DiceGame.pdb
+N:\Year 10\Computer Science\DiceGame\DiceGame\bin\Debug\DiceGame.exe
+N:\Year 10\Computer Science\DiceGame\DiceGame\bin\Debug\DiceGame.pdb
+N:\Year 10\Computer Science\DiceGame\DiceGame\obj\x86\Debug\ResolveAssemblyReference.cache
+N:\Year 10\Computer Science\DiceGame\DiceGame\obj\x86\Debug\DiceGame.Main.resources
+N:\Year 10\Computer Science\DiceGame\DiceGame\obj\x86\Debug\DiceGame.Properties.Resources.resources
+N:\Year 10\Computer Science\DiceGame\DiceGame\obj\x86\Debug\GenerateResource.read.1.tlog
+N:\Year 10\Computer Science\DiceGame\DiceGame\obj\x86\Debug\GenerateResource.write.1.tlog
+N:\Year 10\Computer Science\DiceGame\DiceGame\obj\x86\Debug\DiceGame.NumberOfPlayersDialog.resources
+C:\Users\Josh Newham\Documents\Visual Studio 2017\Projects\DiceGame\DiceGame\bin\Debug\DiceGame.exe
+C:\Users\Josh Newham\Documents\Visual Studio 2017\Projects\DiceGame\DiceGame\bin\Debug\DiceGame.pdb
+C:\Users\Josh Newham\Documents\Visual Studio 2017\Projects\DiceGame\DiceGame\obj\x86\Debug\DiceGame.csprojResolveAssemblyReference.cache
+C:\Users\Josh Newham\Documents\Visual Studio 2017\Projects\DiceGame\DiceGame\obj\x86\Debug\DiceGame.Main.resources
+C:\Users\Josh Newham\Documents\Visual Studio 2017\Projects\DiceGame\DiceGame\obj\x86\Debug\DiceGame.NumberOfPlayersDialog.resources
+C:\Users\Josh Newham\Documents\Visual Studio 2017\Projects\DiceGame\DiceGame\obj\x86\Debug\DiceGame.Properties.Resources.resources
+C:\Users\Josh Newham\Documents\Visual Studio 2017\Projects\DiceGame\DiceGame\obj\x86\Debug\DiceGame.csproj.GenerateResource.Cache
+C:\Users\Josh Newham\Documents\Visual Studio 2017\Projects\DiceGame\DiceGame\obj\x86\Debug\DiceGame.exe
+C:\Users\Josh Newham\Documents\Visual Studio 2017\Projects\DiceGame\DiceGame\obj\x86\Debug\DiceGame.pdb
+D:\Git Code\DiceGame\DiceGame\bin\Debug\DiceGame.exe
+D:\Git Code\DiceGame\DiceGame\bin\Debug\DiceGame.pdb
+D:\Git Code\DiceGame\DiceGame\obj\x86\Debug\DiceGame.csprojResolveAssemblyReference.cache
+D:\Git Code\DiceGame\DiceGame\obj\x86\Debug\DiceGame.Main.resources
+D:\Git Code\DiceGame\DiceGame\obj\x86\Debug\DiceGame.NumberOfPlayersDialog.resources
+D:\Git Code\DiceGame\DiceGame\obj\x86\Debug\DiceGame.Properties.Resources.resources
+D:\Git Code\DiceGame\DiceGame\obj\x86\Debug\DiceGame.csproj.GenerateResource.Cache
+D:\Git Code\DiceGame\DiceGame\obj\x86\Debug\DiceGame.exe
+D:\Git Code\DiceGame\DiceGame\obj\x86\Debug\DiceGame.pdb

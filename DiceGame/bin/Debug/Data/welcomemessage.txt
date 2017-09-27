@@ -1,0 +1,1 @@
+Welcome to Dice Game. This is a game where player(s) must roll two 6-sided dice  and move that number of places. They move around on a 7x7 grid and have to move in a numerical order.
