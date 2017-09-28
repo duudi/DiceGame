@@ -85,11 +85,14 @@
             this.dice2 = new System.Windows.Forms.PictureBox();
             this.player1 = new System.Windows.Forms.PictureBox();
             this.player2 = new System.Windows.Forms.PictureBox();
+            this.speedTrackBar = new System.Windows.Forms.TrackBar();
+            this.speedLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dice1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dice2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.player1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.player2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.speedTrackBar)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -730,9 +733,8 @@
             this.playerturnLabel.AutoSize = true;
             this.playerturnLabel.Location = new System.Drawing.Point(143, 332);
             this.playerturnLabel.Name = "playerturnLabel";
-            this.playerturnLabel.Size = new System.Drawing.Size(41, 13);
+            this.playerturnLabel.Size = new System.Drawing.Size(0, 13);
             this.playerturnLabel.TabIndex = 4;
-            this.playerturnLabel.Text = "label50";
             this.playerturnLabel.Visible = false;
             // 
             // dice1
@@ -777,11 +779,35 @@
             this.player2.TabStop = false;
             this.player2.Visible = false;
             // 
+            // speedTrackBar
+            // 
+            this.speedTrackBar.LargeChange = 250;
+            this.speedTrackBar.Location = new System.Drawing.Point(219, 332);
+            this.speedTrackBar.Maximum = 1000;
+            this.speedTrackBar.Name = "speedTrackBar";
+            this.speedTrackBar.Size = new System.Drawing.Size(104, 45);
+            this.speedTrackBar.SmallChange = 100;
+            this.speedTrackBar.TabIndex = 9;
+            this.speedTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.speedTrackBar.Visible = false;
+            this.speedTrackBar.Scroll += new System.EventHandler(this.speedTrackBar_scroll);
+            // 
+            // speedLabel
+            // 
+            this.speedLabel.AutoSize = true;
+            this.speedLabel.Location = new System.Drawing.Point(227, 362);
+            this.speedLabel.Name = "speedLabel";
+            this.speedLabel.Size = new System.Drawing.Size(0, 13);
+            this.speedLabel.TabIndex = 10;
+            this.speedLabel.Visible = false;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(345, 411);
+            this.Controls.Add(this.speedLabel);
+            this.Controls.Add(this.speedTrackBar);
             this.Controls.Add(this.player2);
             this.Controls.Add(this.player1);
             this.Controls.Add(this.dice2);
@@ -799,6 +825,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dice2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.player1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.player2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.speedTrackBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -863,6 +890,8 @@
         private System.Windows.Forms.PictureBox dice2;
         private System.Windows.Forms.PictureBox player1;
         private System.Windows.Forms.PictureBox player2;
+        private System.Windows.Forms.TrackBar speedTrackBar;
+        private System.Windows.Forms.Label speedLabel;
     }
 }
 

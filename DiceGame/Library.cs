@@ -20,6 +20,7 @@ namespace DiceGame
             public static int player1y = 286;
             public static string playerDirection = "Right";
             public static int player1score = 0;
+            public static int sleepTime = 0;
         }
     }
 }

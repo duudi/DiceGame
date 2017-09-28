@@ -42,6 +42,10 @@ namespace DiceGame
             dice1.Show();
             dice2.Show();
             player1.Show();
+            speedTrackBar.Show();
+            speedLabel.Show();
+            speedLabel.BringToFront();
+            speedLabel.Text = "Speed: " + Library.GlobalVariables.sleepTime + " ms";
             if (Library.GlobalVariables.twoPlayers == true)
             {
                 player2.Show();
@@ -105,6 +109,8 @@ namespace DiceGame
                     dice2.Image = Properties.Resources.dice6;
                     break;
             }
+            dice1.Refresh();
+            dice2.Refresh();
             if (Library.GlobalVariables.dice1 == Library.GlobalVariables.dice2)
             {
                 MessageBox.Show("You have rolled a double! You will now go back " + (Library.GlobalVariables.dice1 + Library.GlobalVariables.dice2) + " squares.");
@@ -169,10 +175,17 @@ namespace DiceGame
                         Library.GlobalVariables.currentSquare += 1;
                     }
                     player1.Location = new Point(Library.GlobalVariables.player1x, Library.GlobalVariables.player1y);
+                    System.Threading.Thread.Sleep(Library.GlobalVariables.sleepTime);
                 }
 
             }
 
+        }
+
+        private void speedTrackBar_scroll(object sender, EventArgs e)
+        {
+            Library.GlobalVariables.sleepTime = speedTrackBar.Value;
+            speedLabel.Text = "Speed: " + Library.GlobalVariables.sleepTime + " ms";
         }
     }
 }
