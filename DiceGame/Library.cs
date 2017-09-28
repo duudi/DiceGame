@@ -19,6 +19,7 @@ namespace DiceGame
             public static int player1x = 16;
             public static int player1y = 286;
             public static string playerDirection = "Right";
+            public static int player1score = 0;
         }
     }
 }

@@ -116,6 +116,7 @@ namespace DiceGame
             }
             GameRefresh();
             PlayerMove();
+            Library.GlobalVariables.player1score += 1;
             if (Library.GlobalVariables.twoPlayers == true && Library.GlobalVariables.currentPlayer == 2)
             {
                 Library.GlobalVariables.currentPlayer -= 1;
@@ -135,28 +136,39 @@ namespace DiceGame
                     {
                         Library.GlobalVariables.playerDirection = "Left";
                         Library.GlobalVariables.player1y -= 44;
-                        player1.Location = new Point(Library.GlobalVariables.player1x, Library.GlobalVariables.player1y);
                         Library.GlobalVariables.currentSquare += 1;
                     }
                     else if (Library.GlobalVariables.currentSquare == 14 || Library.GlobalVariables.currentSquare == 28 || Library.GlobalVariables.currentSquare == 42)
                     {
                         Library.GlobalVariables.playerDirection = "Right";
                         Library.GlobalVariables.player1y -= 44;
-                        player1.Location = new Point(Library.GlobalVariables.player1x, Library.GlobalVariables.player1y);
                         Library.GlobalVariables.currentSquare += 1;
+                    }
+                    else if (Library.GlobalVariables.currentSquare >= 49)
+                    {
+                        DialogResult dialogResult = MessageBox.Show("Congratulations! You won. It took you " + Library.GlobalVariables.player1score + " attempts. Would you like to restart?", "Dice Game", MessageBoxButtons.YesNo);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            Application.Restart();
+                            break;
+                        }
+                        else if (dialogResult == DialogResult.No)
+                        {
+                            Environment.Exit(9);
+                            break;
+                        }
                     }
                     else if (Library.GlobalVariables.playerDirection == "Right")
                     {
                         Library.GlobalVariables.player1x += 44;
-                        player1.Location = new Point(Library.GlobalVariables.player1x, Library.GlobalVariables.player1y);
                         Library.GlobalVariables.currentSquare += 1;
                     }
                     else if (Library.GlobalVariables.playerDirection == "Left")
                     {
                         Library.GlobalVariables.player1x -= 44;
-                        player1.Location = new Point(Library.GlobalVariables.player1x, Library.GlobalVariables.player1y);
                         Library.GlobalVariables.currentSquare += 1;
                     }
+                    player1.Location = new Point(Library.GlobalVariables.player1x, Library.GlobalVariables.player1y);
                 }
 
             }
