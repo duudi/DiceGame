@@ -21,6 +21,13 @@ namespace DiceGame
             public static string playerDirection = "Right";
             public static int player1score = 0;
             public static int sleepTime = 0;
+            public static bool goingUp = false;
+            public static int[,] uporDown = new int[6, 2] { { 7, 44 },
+                                                           { 21, 44 },
+                                                           { 35, 44 },
+                                                           { 14, -44 },
+                                                           { 28, -44 },
+                                                           { 42, -44 }};
         }
     }
 }

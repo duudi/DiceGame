@@ -138,19 +138,25 @@ namespace DiceGame
             {
                 for (int i = 0; i < Library.GlobalVariables.totalSpaceToMove; i++)
                 {
-                    if (Library.GlobalVariables.currentSquare == 7 || Library.GlobalVariables.currentSquare == 21 || Library.GlobalVariables.currentSquare == 35)
+                    Library.GlobalVariables.goingUp = false;
+                    for (int x = 0; x < Library.GlobalVariables.uporDown.GetLength(0); x++)
                     {
-                        Library.GlobalVariables.playerDirection = "Left";
-                        Library.GlobalVariables.player1y -= 44;
-                        Library.GlobalVariables.currentSquare += 1;
+                        if (Library.GlobalVariables.currentSquare == Library.GlobalVariables.uporDown[x, 0])
+                        {
+                            if (Library.GlobalVariables.uporDown[x, 1] == 44)
+                            {
+                                Library.GlobalVariables.playerDirection = "Left";
+                            }
+                            else if (Library.GlobalVariables.uporDown[x, 1] == -44)
+                            {
+                                Library.GlobalVariables.playerDirection = "Right";
+                            }
+                            Library.GlobalVariables.player1y -= 44;
+                            Library.GlobalVariables.currentSquare += 1;
+                            Library.GlobalVariables.goingUp = true;
+                        }
                     }
-                    else if (Library.GlobalVariables.currentSquare == 14 || Library.GlobalVariables.currentSquare == 28 || Library.GlobalVariables.currentSquare == 42)
-                    {
-                        Library.GlobalVariables.playerDirection = "Right";
-                        Library.GlobalVariables.player1y -= 44;
-                        Library.GlobalVariables.currentSquare += 1;
-                    }
-                    else if (Library.GlobalVariables.currentSquare >= 49)
+                    if (Library.GlobalVariables.currentSquare >= 49)
                     {
                         DialogResult dialogResult = MessageBox.Show("Congratulations! You won. It took you " + Library.GlobalVariables.player1score + " attempts. Would you like to restart?", "Dice Game", MessageBoxButtons.YesNo);
                         if (dialogResult == DialogResult.Yes)
@@ -164,18 +170,19 @@ namespace DiceGame
                             break;
                         }
                     }
-                    else if (Library.GlobalVariables.playerDirection == "Right")
+                    else if (Library.GlobalVariables.playerDirection == "Right" && Library.GlobalVariables.goingUp == false)
                     {
                         Library.GlobalVariables.player1x += 44;
                         Library.GlobalVariables.currentSquare += 1;
                     }
-                    else if (Library.GlobalVariables.playerDirection == "Left")
+                    else if (Library.GlobalVariables.playerDirection == "Left" && Library.GlobalVariables.goingUp == false)
                     {
                         Library.GlobalVariables.player1x -= 44;
                         Library.GlobalVariables.currentSquare += 1;
                     }
                     player1.Location = new Point(Library.GlobalVariables.player1x, Library.GlobalVariables.player1y);
                     System.Threading.Thread.Sleep(Library.GlobalVariables.sleepTime);
+
                 }
 
             }
