@@ -12,22 +12,17 @@ namespace DiceGame
         {
             public static bool twoPlayers = false;
             public static int currentPlayer = 1;
-            public static int dice1;
-            public static int dice2;
+            public static int diceValue1;
+            public static int diceValue2;
             public static int totalSpaceToMove;
             public static int currentSquare = 1;
-            public static int player1x = 16;
-            public static int player1y = 286;
-            public static string playerDirection = "Right";
-            public static int player1score = 0;
             public static int sleepTime = 0;
-            public static bool goingUp = false;
-            public static int[,] uporDown = new int[6, 2] { { 7, 44 },
-                                                           { 21, 44 },
-                                                           { 35, 44 },
-                                                           { 14, -44 },
-                                                           { 28, -44 },
-                                                           { 42, -44 }};
+            public static bool goingForwards;
+            public static object[,] playerStats = new object[,] {
+                                                                  { 0, 0, 0, 0, 0, 0, },
+                                                                  {  1, 1, 0, false, 16, 286 }, // 1st Element: Player Number, 2nd Element: CurrentSquare, 3rd Element: Score,
+                                                                  { 2, 1, 0, false, 37, 286 } }; // 4th Element: Going Backwards? 5th Element: Player X, 6th Element: Player Y
+
         }
     }
 }

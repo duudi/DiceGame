@@ -23,8 +23,8 @@ namespace DiceGame
             string welcomePath = Environment.CurrentDirectory + @"\Data\welcomemessage.txt";
             string welcomeMessage = File.ReadAllText(welcomePath);
             MessageBox.Show(welcomeMessage, "Welcome");
-            player1.Location = new Point(Library.GlobalVariables.player1x, Library.GlobalVariables.player1y);
-            player2.Location = new Point(37, 170);
+            player1.Location = new Point(Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(1, 4))), Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(1, 5))));
+            player2.Location = new Point(Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(2, 4))), Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(2, 5))));
         }
 
         private void startButton_Click(object sender, EventArgs e)
@@ -34,6 +34,61 @@ namespace DiceGame
             createDialog.Closed += (s, args) => DialogClosed();
         }
 
+        private void rollButton_Click(object sender, EventArgs e)
+        {
+            Library.GlobalVariables.totalSpaceToMove = 0;
+            RollDice();
+            ChangeDiceImage(Library.GlobalVariables.diceValue1, Library.GlobalVariables.diceValue2, dice1, dice2);
+            Library.GlobalVariables.goingForwards = EvaluateDice(Library.GlobalVariables.diceValue1, Library.GlobalVariables.diceValue2);
+            Library.GlobalVariables.totalSpaceToMove = Library.GlobalVariables.diceValue1 + Library.GlobalVariables.diceValue2;
+            Library.GlobalVariables.currentSquare = SpacePossible(Library.GlobalVariables.currentSquare);
+            GameRefresh();
+            IncrementScore(Library.GlobalVariables.currentPlayer);
+            TurnMove(Library.GlobalVariables.currentPlayer, Library.GlobalVariables.goingForwards);
+            if (Library.GlobalVariables.twoPlayers == true)
+            {
+                SwitchPlayer();
+            }
+        }
+        private void TurnMove(int currentPlayer, bool goingForwards)
+        {
+            for (int i = 0; i < Library.GlobalVariables.totalSpaceToMove; i++)
+            {
+                double modSpaceUnrounded = Library.GlobalVariables.currentSquare / 7;
+                int modSpace = Convert.ToInt32(Math.Floor(modSpaceUnrounded));
+                int intMoveMultiplier = MoveMultiplier(modSpace, goingForwards);
+                PlayerMove(currentPlayer, intMoveMultiplier);
+            }
+        }
+        private void PlayerMove (int currentPlayer, int intMoveMultiplier)
+        {
+            int nextSpace = SpacePossible(NextSquare(Library.GlobalVariables.currentSquare, Library.GlobalVariables.goingForwards)); // Can I move to the next square?
+            if (nextSpace != Library.GlobalVariables.currentSquare)
+            {
+                int yMultiplier = ChangeY(nextSpace, Library.GlobalVariables.goingForwards);
+                if (yMultiplier == 0)
+                {
+                    int playerX = Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(currentPlayer, 4)));
+                    playerX = playerX + (44 * intMoveMultiplier);
+                    Library.GlobalVariables.playerStats.SetValue(playerX, currentPlayer, 4);
+                }
+                else
+                {
+                    int playerY = Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(currentPlayer, 5)));
+                    playerY = playerY + (44 * yMultiplier);
+                    Library.GlobalVariables.playerStats.SetValue(playerY, currentPlayer, 5);
+                }
+                Library.GlobalVariables.currentSquare = nextSpace;
+                ApplyMove();
+            }
+            
+        }
+        private void ApplyMove()
+        {
+            player1.Location = new Point(Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(1, 4))), Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(1, 5))));
+            player2.Location = new Point(Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(2, 4))), Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(2, 5))));
+            System.Threading.Thread.Sleep(Library.GlobalVariables.sleepTime);
+        }
         private void DialogClosed()
         {
             rollButton.Show();
@@ -51,7 +106,6 @@ namespace DiceGame
                 player2.Show();
             }
         }
-
         private void GameRefresh()
         {
             if (Library.GlobalVariables.twoPlayers == true)
@@ -61,13 +115,61 @@ namespace DiceGame
             }
         }
 
-        private void rollButton_Click(object sender, EventArgs e)
+        private void RollDice()
+        {
+            Random rnd = new Random();
+            Library.GlobalVariables.diceValue1 = rnd.Next(1, 7);
+            Library.GlobalVariables.diceValue2 = rnd.Next(1, 7);
+        }
+
+        private bool EvaluateDice(int dice1, int dice2)
+        {
+            if (dice1 == dice2)
+            {
+                MessageBox.Show("You have rolled a double! You will now go back " + (dice1 + dice2) + " squares.");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private int SpacePossible(int nextSpace)
+        {
+            if (nextSpace < 1)
+            {
+                return 1;
+            }
+            else if (nextSpace >= 49)
+            {
+                CompletedGame();
+                return 49;
+            }
+            else
+            {
+                return nextSpace;
+            }
+        }
+
+        private void CompletedGame()
         {
             Library.GlobalVariables.totalSpaceToMove = 0;
-            Random rnd = new Random();
-            Library.GlobalVariables.dice1 = rnd.Next(1, 7);
-            Library.GlobalVariables.dice2 = rnd.Next(1, 7);
-            switch (Library.GlobalVariables.dice1)
+            DialogResult dialogResult = MessageBox.Show("Congratulations! You won. It took you " + Library.GlobalVariables.playerStats.GetValue(Library.GlobalVariables.currentPlayer, 2) + " attempts. Would you like to restart?", "Dice Game", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Application.Restart();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                Application.Exit();
+                return;
+            }
+        }
+
+        private void ChangeDiceImage (int diceValue1, int diceValue2, PictureBox dice1, PictureBox dice2)
+        {
+            switch (diceValue1)
             {
                 case 1:
                     dice1.Image = Properties.Resources.dice1;
@@ -88,7 +190,7 @@ namespace DiceGame
                     dice1.Image = Properties.Resources.dice6;
                     break;
             }
-            switch (Library.GlobalVariables.dice2)
+            switch (diceValue2)
             {
                 case 1:
                     dice2.Image = Properties.Resources.dice1;
@@ -111,82 +213,76 @@ namespace DiceGame
             }
             dice1.Refresh();
             dice2.Refresh();
-            if (Library.GlobalVariables.dice1 == Library.GlobalVariables.dice2)
-            {
-                MessageBox.Show("You have rolled a double! You will now go back " + (Library.GlobalVariables.dice1 + Library.GlobalVariables.dice2) + " squares.");
-            }
-            Library.GlobalVariables.totalSpaceToMove = Library.GlobalVariables.dice1 + Library.GlobalVariables.dice2;
-            if (Library.GlobalVariables.currentSquare < 1)
-            {
-                Library.GlobalVariables.currentSquare = 1;
-            }
-            GameRefresh();
-            PlayerMove();
-            Library.GlobalVariables.player1score += 1;
-            if (Library.GlobalVariables.twoPlayers == true && Library.GlobalVariables.currentPlayer == 2)
+        }
+
+        private void IncrementScore(int currentPlayer)
+        {
+            Library.GlobalVariables.playerStats.SetValue(Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(currentPlayer, 2))) + 1, currentPlayer, 2);
+        }
+
+        private void SwitchPlayer()
+        {
+            if (Library.GlobalVariables.currentPlayer == 2)
             {
                 Library.GlobalVariables.currentPlayer -= 1;
             }
-            else if (Library.GlobalVariables.twoPlayers == true && Library.GlobalVariables.currentPlayer == 1)
+            else
             {
                 Library.GlobalVariables.currentPlayer += 1;
             }
         }
-        private void PlayerMove()
+
+        private int MoveMultiplier(int modSpace, bool goingForwards)
         {
-            if (Library.GlobalVariables.twoPlayers == false)
+            int modspaceEven = modSpace % 2;
+            if (modspaceEven == 0 && goingForwards)
             {
-                for (int i = 0; i < Library.GlobalVariables.totalSpaceToMove; i++)
-                {
-                    Library.GlobalVariables.goingUp = false;
-                    for (int x = 0; x < Library.GlobalVariables.uporDown.GetLength(0); x++)
-                    {
-                        if (Library.GlobalVariables.currentSquare == Library.GlobalVariables.uporDown[x, 0])
-                        {
-                            if (Library.GlobalVariables.uporDown[x, 1] == 44)
-                            {
-                                Library.GlobalVariables.playerDirection = "Left";
-                            }
-                            else if (Library.GlobalVariables.uporDown[x, 1] == -44)
-                            {
-                                Library.GlobalVariables.playerDirection = "Right";
-                            }
-                            Library.GlobalVariables.player1y -= 44;
-                            Library.GlobalVariables.currentSquare += 1;
-                            Library.GlobalVariables.goingUp = true;
-                        }
-                    }
-                    if (Library.GlobalVariables.currentSquare >= 49)
-                    {
-                        DialogResult dialogResult = MessageBox.Show("Congratulations! You won. It took you " + Library.GlobalVariables.player1score + " attempts. Would you like to restart?", "Dice Game", MessageBoxButtons.YesNo);
-                        if (dialogResult == DialogResult.Yes)
-                        {
-                            Application.Restart();
-                            break;
-                        }
-                        else if (dialogResult == DialogResult.No)
-                        {
-                            Environment.Exit(9);
-                            break;
-                        }
-                    }
-                    else if (Library.GlobalVariables.playerDirection == "Right" && Library.GlobalVariables.goingUp == false)
-                    {
-                        Library.GlobalVariables.player1x += 44;
-                        Library.GlobalVariables.currentSquare += 1;
-                    }
-                    else if (Library.GlobalVariables.playerDirection == "Left" && Library.GlobalVariables.goingUp == false)
-                    {
-                        Library.GlobalVariables.player1x -= 44;
-                        Library.GlobalVariables.currentSquare += 1;
-                    }
-                    player1.Location = new Point(Library.GlobalVariables.player1x, Library.GlobalVariables.player1y);
-                    System.Threading.Thread.Sleep(Library.GlobalVariables.sleepTime);
-
-                }
-
+                return 1;
             }
+            else if (modspaceEven == 0 && !goingForwards)
+            {
+                return -1;
+            }
+            else if (modspaceEven != 0 && goingForwards)
+            {
+                return -1;
+            }
+            else if (modspaceEven != 0 && !goingForwards)
+            {
+                return 1;
+            }
+            else
+            {
+                return 1;
+            }
+        }
 
+        private int ChangeY (int nextSpace, bool goingForwards)
+        {
+            int modChangeY = nextSpace % 7;
+            if (goingForwards && modChangeY == 1)
+            {
+                return -1;
+            }
+            else if (!goingForwards && modChangeY == 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        private int NextSquare (int currentSquare, bool goingForwards)
+        {
+            if (goingForwards)
+            {
+                return currentSquare + 1;
+            }
+            else
+            {
+                return currentSquare - 1;
+            }
         }
 
         private void speedTrackBar_scroll(object sender, EventArgs e)
