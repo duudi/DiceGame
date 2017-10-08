@@ -87,6 +87,10 @@ namespace DiceGame
         {
             player1.Location = new Point(Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(1, 4))), Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(1, 5))));
             player2.Location = new Point(Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(2, 4))), Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(2, 5))));
+            if (Library.GlobalVariables.currentSquare == 49)
+            {
+                CompletedGame();
+            }
             System.Threading.Thread.Sleep(Library.GlobalVariables.sleepTime);
         }
         private void DialogClosed()
@@ -140,11 +144,6 @@ namespace DiceGame
             if (nextSpace < 1)
             {
                 return 1;
-            }
-            else if (nextSpace >= 49)
-            {
-                CompletedGame();
-                return 49;
             }
             else
             {
@@ -222,6 +221,7 @@ namespace DiceGame
 
         private void SwitchPlayer()
         {
+            Library.GlobalVariables.playerStats.SetValue(Library.GlobalVariables.currentSquare, Library.GlobalVariables.currentPlayer, 1);
             if (Library.GlobalVariables.currentPlayer == 2)
             {
                 Library.GlobalVariables.currentPlayer -= 1;
@@ -230,6 +230,7 @@ namespace DiceGame
             {
                 Library.GlobalVariables.currentPlayer += 1;
             }
+            Library.GlobalVariables.currentSquare = Int32.Parse(Convert.ToString((Library.GlobalVariables.playerStats.GetValue((Library.GlobalVariables.currentPlayer), 1))));
         }
 
         private int MoveMultiplier(int modSpace, bool goingForwards)
@@ -241,7 +242,14 @@ namespace DiceGame
             }
             else if (modspaceEven == 0 && !goingForwards)
             {
-                return -1;
+                if (new[] { 14, 28, 42 }.Contains(Library.GlobalVariables.currentSquare))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return -1;
+                }
             }
             else if (modspaceEven != 0 && goingForwards)
             {
@@ -249,7 +257,14 @@ namespace DiceGame
             }
             else if (modspaceEven != 0 && !goingForwards)
             {
-                return 1;
+                if (new[] { 7, 21, 35 }.Contains(Library.GlobalVariables.currentSquare))
+                {
+                    return -1;
+                }
+                else
+                {
+                    return 1;
+                }
             }
             else
             {
