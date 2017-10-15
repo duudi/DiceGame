@@ -23,6 +23,9 @@ namespace DiceGame
             string welcomePath = Environment.CurrentDirectory + @"\Data\welcomemessage.txt";
             string welcomeMessage = File.ReadAllText(welcomePath);
             MessageBox.Show(welcomeMessage, "Welcome");
+            string objectPath = Environment.CurrentDirectory + @"\Data\obstacles.txt";
+            ReadInObstacles(objectPath);
+            PlaceObstacles();
             player1.Location = new Point(Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(1, 4))), Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(1, 5))));
             player2.Location = new Point(Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(2, 4))), Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(2, 5))));
         }
@@ -42,6 +45,7 @@ namespace DiceGame
             Library.GlobalVariables.goingForwards = EvaluateDice(Library.GlobalVariables.diceValue1, Library.GlobalVariables.diceValue2);
             Library.GlobalVariables.totalSpaceToMove = Library.GlobalVariables.diceValue1 + Library.GlobalVariables.diceValue2;
             Library.GlobalVariables.currentSquare = SpacePossible(Library.GlobalVariables.currentSquare);
+            Library.GlobalVariables.spaceLeft = Library.GlobalVariables.totalSpaceToMove;
             GameRefresh();
             IncrementScore(Library.GlobalVariables.currentPlayer);
             TurnMove(Library.GlobalVariables.currentPlayer, Library.GlobalVariables.goingForwards);
@@ -85,6 +89,7 @@ namespace DiceGame
         }
         private void ApplyMove()
         {
+            Library.GlobalVariables.spaceLeft -= 1;
             player1.Location = new Point(Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(1, 4))), Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(1, 5))));
             player2.Location = new Point(Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(2, 4))), Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(2, 5))));
             if (Library.GlobalVariables.currentSquare == 49)
@@ -92,6 +97,7 @@ namespace DiceGame
                 CompletedGame();
             }
             System.Threading.Thread.Sleep(Library.GlobalVariables.sleepTime);
+            CheckForObstacles();
         }
         private void DialogClosed()
         {
@@ -108,6 +114,57 @@ namespace DiceGame
             if (Library.GlobalVariables.twoPlayers == true)
             {
                 player2.Show();
+            }
+        }
+        private void ReadInObstacles(string objectPath)
+        {
+            Library.GlobalVariables.obstacleStats = File.ReadAllLines(objectPath)
+                   .Select(l => l.Split(',').Select(i => int.Parse(i)).ToArray())
+                   .ToArray();
+        }
+        private void PlaceObstacles()
+        {
+            for (int i = 0; i < Library.GlobalVariables.obstacleStats.GetLength(0); i++)
+            {
+                Label lbl = this.Controls.Find("label" + Library.GlobalVariables.obstacleStats[i][0], true).FirstOrDefault() as Label;
+                int obstacleX = Convert.ToInt32(lbl.Location.X) - 9;
+                int obstacleY = Convert.ToInt32(lbl.Location.Y) + 7;
+                PictureBox obstacle = new PictureBox();
+                if (Library.GlobalVariables.obstacleStats[i][1] < 0)
+                {
+                    obstacle.Image = Properties.Resources.badObstacle;
+                }
+                else
+                {
+                    obstacle.Image = Properties.Resources.goodObstacle;
+                }
+                obstacle.Location = new Point(obstacleX, obstacleY);
+                obstacle.Size = new Size(17, 17);
+                obstacle.SizeMode = PictureBoxSizeMode.Zoom;
+                this.Controls.Add(obstacle);
+                obstacle.Show();
+                obstacle.BringToFront();
+            }
+        }
+        private void CheckForObstacles()
+        {
+            foreach (int[] array in Library.GlobalVariables.obstacleStats)
+            {
+                if (Library.GlobalVariables.currentSquare == array[0] && Library.GlobalVariables.spaceLeft == 0)
+                {
+                    if (array[1] < 0)
+                    {
+                        Library.GlobalVariables.totalSpaceToMove = Math.Abs(array[1]);
+                        Library.GlobalVariables.goingForwards = false;
+                        MessageBox.Show("You have landed on a bad obstacle. You will now go back " + Math.Abs(array[1]) + " squares.");
+                    }
+                    else if (array[1] > 0)
+                    {
+                        Library.GlobalVariables.totalSpaceToMove = array[1];
+                        MessageBox.Show("You have landed on a good obstacle. You will now advance " + array[1] + " squares.");
+                    }
+                    TurnMove(Library.GlobalVariables.currentPlayer, Library.GlobalVariables.goingForwards);
+                }
             }
         }
         private void GameRefresh()

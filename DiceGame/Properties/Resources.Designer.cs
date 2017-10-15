@@ -63,6 +63,16 @@ namespace DiceGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap badObstacle {
+            get {
+                object obj = ResourceManager.GetObject("badObstacle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap dice1 {
             get {
                 object obj = ResourceManager.GetObject("dice1", resourceCulture);
@@ -116,6 +126,16 @@ namespace DiceGame.Properties {
         internal static System.Drawing.Bitmap dice6 {
             get {
                 object obj = ResourceManager.GetObject("dice6", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap goodObstacle {
+            get {
+                object obj = ResourceManager.GetObject("goodObstacle", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
