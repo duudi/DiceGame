@@ -35,3 +35,13 @@ D:\Git Code\DiceGame\DiceGame\obj\x86\Debug\DiceGame.Properties.Resources.resour
 D:\Git Code\DiceGame\DiceGame\obj\x86\Debug\DiceGame.csproj.GenerateResource.Cache
 D:\Git Code\DiceGame\DiceGame\obj\x86\Debug\DiceGame.exe
 D:\Git Code\DiceGame\DiceGame\obj\x86\Debug\DiceGame.pdb
+N:\Year 10\Computer Science\Coding\DiceGame\DiceGame\obj\x86\Debug\DiceGame.exe
+N:\Year 10\Computer Science\Coding\DiceGame\DiceGame\obj\x86\Debug\DiceGame.pdb
+N:\Year 10\Computer Science\Coding\DiceGame\DiceGame\bin\Debug\DiceGame.exe
+N:\Year 10\Computer Science\Coding\DiceGame\DiceGame\bin\Debug\DiceGame.pdb
+N:\Year 10\Computer Science\Coding\DiceGame\DiceGame\obj\x86\Debug\ResolveAssemblyReference.cache
+N:\Year 10\Computer Science\Coding\DiceGame\DiceGame\obj\x86\Debug\DiceGame.Main.resources
+N:\Year 10\Computer Science\Coding\DiceGame\DiceGame\obj\x86\Debug\DiceGame.NumberOfPlayersDialog.resources
+N:\Year 10\Computer Science\Coding\DiceGame\DiceGame\obj\x86\Debug\DiceGame.Properties.Resources.resources
+N:\Year 10\Computer Science\Coding\DiceGame\DiceGame\obj\x86\Debug\GenerateResource.read.1.tlog
+N:\Year 10\Computer Science\Coding\DiceGame\DiceGame\obj\x86\Debug\GenerateResource.write.1.tlog
