@@ -130,6 +130,7 @@ namespace DiceGame
             if (Library.GlobalVariables.twoPlayers == true) // If there are two players
             {
                 SwitchPlayer(); // Call the SwitchPlayer method
+                GameRefresh(); // Call the GameRefresh method
             }
         }
         private void speedTrackBar_scroll(object sender, EventArgs e) // When the speed slider is changed

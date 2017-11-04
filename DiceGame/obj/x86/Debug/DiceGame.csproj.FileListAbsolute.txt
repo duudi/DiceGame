@@ -28,7 +28,6 @@ C:\Users\Josh Newham\Documents\Visual Studio 2017\Projects\DiceGame\DiceGame\obj
 C:\Users\Josh Newham\Documents\Visual Studio 2017\Projects\DiceGame\DiceGame\obj\x86\Debug\DiceGame.pdb
 D:\Git Code\DiceGame\DiceGame\bin\Debug\DiceGame.exe
 D:\Git Code\DiceGame\DiceGame\bin\Debug\DiceGame.pdb
-D:\Git Code\DiceGame\DiceGame\obj\x86\Debug\DiceGame.csprojResolveAssemblyReference.cache
 D:\Git Code\DiceGame\DiceGame\obj\x86\Debug\DiceGame.Main.resources
 D:\Git Code\DiceGame\DiceGame\obj\x86\Debug\DiceGame.NumberOfPlayersDialog.resources
 D:\Git Code\DiceGame\DiceGame\obj\x86\Debug\DiceGame.Properties.Resources.resources
