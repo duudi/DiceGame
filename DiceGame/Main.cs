@@ -81,6 +81,7 @@ namespace DiceGame
                     else if (array[1] > 0) // If the obstacle sends the player forwards
                     {
                         Library.GlobalVariables.totalSpaceToMove = array[1]; // Sets the number of spaces the player needs to move
+                        Library.GlobalVariables.goingForwards = true; // Set the goingForwards variable to true (the player is going forwards)
                         MessageBox.Show("You have landed on a good obstacle. You will now advance " + array[1] + " squares."); // Show a message to the player with the number of spaces they are moving forwards by
                     }
                     TurnMove(Library.GlobalVariables.currentPlayer, Library.GlobalVariables.goingForwards); // Call the TurnMove method to move the player
@@ -354,7 +355,7 @@ namespace DiceGame
             }
             else // If the player is going forwards and does not need to move up or down
             {
-                return 0; // Retrun a y multiplier of 0 (no change in height)
+                return 0; // Return a y multiplier of 0 (no change in height)
             }
         }
         private int NextSquare (int currentSquare, bool goingForwards) // NextSquare method
