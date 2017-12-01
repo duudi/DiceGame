@@ -45,3 +45,4 @@ N:\Year 10\Computer Science\Coding\DiceGame\DiceGame\obj\x86\Debug\DiceGame.Prop
 N:\Year 10\Computer Science\Coding\DiceGame\DiceGame\obj\x86\Debug\GenerateResource.read.1.tlog
 N:\Year 10\Computer Science\Coding\DiceGame\DiceGame\obj\x86\Debug\GenerateResource.write.1.tlog
 D:\Git Code\DiceGame\DiceGame\obj\x86\Debug\DiceGame.csprojResolveAssemblyReference.cache
+D:\Git Code\DiceGame\DiceGame\obj\x86\Debug\DiceGame.csproj.CoreCompileInputs.cache

@@ -20,9 +20,7 @@ namespace DiceGame
 
         private void Main_Load(object sender, EventArgs e) // When the program has loaded
         {
-            string welcomePath = Environment.CurrentDirectory + @"\Data\welcomemessage.txt"; // Sets the location of the message to a variable (Environment.CurrentDirectory = \bin\Debug of the project)
-            string welcomeMessage = File.ReadAllText(welcomePath); // Loads in the text from welcomemessage.txt to a string
-            MessageBox.Show(welcomeMessage, "Welcome"); // Show a message with the text from the .txt file and the title of "Welcome"
+            MessageBox.Show(Message.StartMessage(), "Welcome"); // Shows a welcome message (the text is read from a text file in the Message class)
             string obstaclePath = Environment.CurrentDirectory + @"\Data\obstacles.txt"; // Sets the location of the text file containing the obstacles to a variable
             ReadInObstacles(obstaclePath); // Calls the ReadInObstacles method and passes in the path of the text file
             PlaceObstacles(); // Calls the PlaceObstacles method
