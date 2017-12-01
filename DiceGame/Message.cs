@@ -23,7 +23,10 @@ namespace DiceGame
         }
         public static string WinMessage() // WinMessage method
         {
-            return "";
+            string tempText = File.ReadAllText(path + "winmessage.txt"); // Read in all the text from winmessage.txt into a temporary variable
+            string totalTurns = Library.GlobalVariables.playerStats.GetValue(Library.GlobalVariables.currentPlayer, 2).ToString(); // Fetch the number of turns the current player has had from the playerStats array and store it in a variable
+            string messageText = tempText.Replace("*", totalTurns); // The text in the .txt file has an asterisk where the variable should be inserted, this code replaces the asterisk with the number of turns
+            return messageText; // Return the replaced text so it can be displayed
         }
     }
 }

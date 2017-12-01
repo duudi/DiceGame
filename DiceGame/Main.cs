@@ -375,7 +375,7 @@ namespace DiceGame
         private void CompletedGame() // CompletedGame method
         {
             Library.GlobalVariables.totalSpaceToMove = 0; // Set the total space left to move to 0
-            DialogResult dialogResult = MessageBox.Show("Congratulations! You won. It took you " + Library.GlobalVariables.playerStats.GetValue(Library.GlobalVariables.currentPlayer, 2) + " attempts. Would you like to restart?", "Dice Game", MessageBoxButtons.YesNo); // Show a dialog with the winning player's score and the option to restart or quit the game
+            DialogResult dialogResult = MessageBox.Show(Message.WinMessage(), "Dice Game", MessageBoxButtons.YesNo); // Show a dialog with the winning player's score and the option to restart or quit the game
             if (dialogResult == DialogResult.Yes) // If the user wants to restart the game
             {
                 Application.Restart(); // Restart the entire application
