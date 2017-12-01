@@ -153,7 +153,7 @@ namespace DiceGame
         {
             if (dice1 == dice2) // If both dice have the same value
             {
-                MessageBox.Show("You have rolled a double! You will now go back " + (dice1 + dice2) + " squares."); // Tell the user they have rolled a double
+                MessageBox.Show(Message.DoubleDiceMessage()); // Tell the user they have rolled a double
                 return false; // Return false
             }
             else // If the dice have different values
