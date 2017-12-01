@@ -17,16 +17,31 @@ namespace DiceGame
         public static string DoubleDiceMessage() // DoubleDiceMessage method
         {
             string tempText = File.ReadAllText(path + "doubledicemessage.txt"); // Read in all the text from doubledicemessage.txt into a temporary variable
-            string diceTotal = (Library.GlobalVariables.diceValue1 + Library.GlobalVariables.diceValue2).ToString(); // Calculate the total of the two dice and store it in a variable
-            string messageText = tempText.Replace("*", diceTotal); // The text in the .txt file has an asterisk where the variable should be inserted, this code replaces the asterisk with the total of the dice
-            return messageText; // Return the replaced text so it can be displayed
+            if (tempText.Contains("*")) // If the text file contains an asterisk
+            {
+                string diceTotal = (Library.GlobalVariables.diceValue1 + Library.GlobalVariables.diceValue2).ToString(); // Calculate the total of the two dice and store it in a variable
+                string messageText = tempText.Replace("*", diceTotal); // The text in the .txt file has an asterisk where the variable should be inserted, this code replaces the asterisk with the total of the dice
+                return messageText; // Return the replaced text so it can be displayed
+            }
+            else // If the text file doesn't contain an asterisk
+            {
+                return tempText; // Return the text from doubledicemessage.txt without replacing anything
+            }
+            
         }
         public static string WinMessage() // WinMessage method
         {
             string tempText = File.ReadAllText(path + "winmessage.txt"); // Read in all the text from winmessage.txt into a temporary variable
-            string totalTurns = Library.GlobalVariables.playerStats.GetValue(Library.GlobalVariables.currentPlayer, 2).ToString(); // Fetch the number of turns the current player has had from the playerStats array and store it in a variable
-            string messageText = tempText.Replace("*", totalTurns); // The text in the .txt file has an asterisk where the variable should be inserted, this code replaces the asterisk with the number of turns
-            return messageText; // Return the replaced text so it can be displayed
+            if (tempText.Contains("*")) // If the text file contains an asterisk
+            {
+                string totalTurns = Library.GlobalVariables.playerStats.GetValue(Library.GlobalVariables.currentPlayer, 2).ToString(); // Fetch the number of turns the current player has had from the playerStats array and store it in a variable
+                string messageText = tempText.Replace("*", totalTurns); // The text in the .txt file has an asterisk where the variable should be inserted, this code replaces the asterisk with the number of turns
+                return messageText; // Return the replaced text so it can be displayed
+            }
+            else // If the text file doesn't contain an asterisk
+            {
+                return tempText; // Return the text from winmessage.txt without replacing anything
+            }
         }
     }
 }
