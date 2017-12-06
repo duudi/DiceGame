@@ -24,8 +24,12 @@ namespace DiceGame
             string obstaclePath = Environment.CurrentDirectory + @"\Data\obstacles.txt"; // Sets the location of the text file containing the obstacles to a variable
             ReadInObstacles(obstaclePath); // Calls the ReadInObstacles method and passes in the path of the text file
             PlaceObstacles(); // Calls the PlaceObstacles method
-            player1.Location = new Point(Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(1, 4))), Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(1, 5)))); // Sets player one's location to the default location in the array
-            player2.Location = new Point(Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(2, 4))), Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(2, 5)))); // Sets player two's location to the default location in the array
+
+            // Sets player one's location to the default location in the array
+            pictureBoxPlayer1.Location = new Point(Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(1, 4))), Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(1, 5)))); 
+
+            // Sets player two's location to the default location in the array
+            pictureBoxPlayer2.Location = new Point(Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(2, 4))), Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(2, 5)))); 
         }
 
 
@@ -103,23 +107,23 @@ namespace DiceGame
             rollButton.Show(); // Show the roll button
             startButton.Hide(); // Hide the start button
             GameRefresh(); // Call the GameRefresh method
-            dice1.Show(); // Show the first dice image
-            dice2.Show(); // Show the second dice image
-            player1.Show(); // Show player 1
+            pictureBoxDice1.Show(); // Show the first dice image
+            pictureBoxDice2.Show(); // Show the second dice image
+            pictureBoxPlayer1.Show(); // Show player 1
             speedTrackBar.Show(); // Show the speed slider
             speedLabel.Show(); // Show the label on the speed slider
             speedLabel.BringToFront(); // Bring the label to the front
             speedLabel.Text = "Speed: " + Library.GlobalVariables.sleepTime + " ms"; // Set the text of the label
             if (Library.GlobalVariables.twoPlayers == true) // If there are two players playing
             {
-                player2.Show(); // Show player 2
+                pictureBoxPlayer2.Show(); // Show player 2
             }
         }
         private void rollButton_Click(object sender, EventArgs e) // When the roll button is clicked
         {
             Library.GlobalVariables.totalSpaceToMove = 0; // Reset the number of spaces the player needs to move
             RollDice(); // Call the RollDice method
-            ChangeDiceImage(Library.GlobalVariables.diceValue1, Library.GlobalVariables.diceValue2, dice1, dice2); // Call the change dice method and pass in the values of the dice
+            ChangeDiceImage(Library.GlobalVariables.diceValue1, Library.GlobalVariables.diceValue2, pictureBoxDice1, pictureBoxDice2); // Call the change dice method and pass in the values of the dice
             Library.GlobalVariables.goingForwards = EvaluateDice(Library.GlobalVariables.diceValue1, Library.GlobalVariables.diceValue2);
             Library.GlobalVariables.totalSpaceToMove = Library.GlobalVariables.diceValue1 + Library.GlobalVariables.diceValue2; // Set the totalSpaceToMove to the total of dice 1 and dice 2
             Library.GlobalVariables.currentSquare = SpacePossible(Library.GlobalVariables.currentSquare); // Call the SpacePossible method to check if the next square is a possible move
@@ -250,8 +254,8 @@ namespace DiceGame
         private void ApplyMove() // ApplyMove method
         {
             Library.GlobalVariables.spaceLeft -= 1; // Reduce the spaces left by 1
-            player1.Location = new Point(Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(1, 4))), Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(1, 5)))); // Set player 1's location to the x and y in the array
-            player2.Location = new Point(Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(2, 4))), Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(2, 5)))); // Set player 2's location to the x and y in the array
+            pictureBoxPlayer1.Location = new Point(Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(1, 4))), Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(1, 5)))); // Set player 1's location to the x and y in the array
+            pictureBoxPlayer2.Location = new Point(Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(2, 4))), Int32.Parse(Convert.ToString(Library.GlobalVariables.playerStats.GetValue(2, 5)))); // Set player 2's location to the x and y in the array
             if (Library.GlobalVariables.currentSquare == 49) // If the player has reached square 49 
             {
                 CompletedGame(); // Call the CompletedGame method

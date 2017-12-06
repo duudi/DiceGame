@@ -31,10 +31,10 @@
             this.rollButton = new System.Windows.Forms.Button();
             this.startButton = new System.Windows.Forms.Button();
             this.playerturnLabel = new System.Windows.Forms.Label();
-            this.dice1 = new System.Windows.Forms.PictureBox();
-            this.dice2 = new System.Windows.Forms.PictureBox();
-            this.player1 = new System.Windows.Forms.PictureBox();
-            this.player2 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxDice1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxDice2 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxPlayer1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxPlayer2 = new System.Windows.Forms.PictureBox();
             this.speedTrackBar = new System.Windows.Forms.TrackBar();
             this.speedLabel = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
@@ -87,10 +87,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            ((System.ComponentModel.ISupportInitialize)(this.dice1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dice2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.player1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.player2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDice1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDice2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlayer1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlayer2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.speedTrackBar)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -125,47 +125,47 @@
             this.playerturnLabel.TabIndex = 4;
             this.playerturnLabel.Visible = false;
             // 
-            // dice1
+            // pictureBoxDice1
             // 
-            this.dice1.Location = new System.Drawing.Point(12, 361);
-            this.dice1.Name = "dice1";
-            this.dice1.Size = new System.Drawing.Size(30, 30);
-            this.dice1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.dice1.TabIndex = 5;
-            this.dice1.TabStop = false;
-            this.dice1.Visible = false;
+            this.pictureBoxDice1.Location = new System.Drawing.Point(12, 361);
+            this.pictureBoxDice1.Name = "pictureBoxDice1";
+            this.pictureBoxDice1.Size = new System.Drawing.Size(30, 30);
+            this.pictureBoxDice1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxDice1.TabIndex = 5;
+            this.pictureBoxDice1.TabStop = false;
+            this.pictureBoxDice1.Visible = false;
             // 
-            // dice2
+            // pictureBoxDice2
             // 
-            this.dice2.Location = new System.Drawing.Point(57, 361);
-            this.dice2.Name = "dice2";
-            this.dice2.Size = new System.Drawing.Size(30, 30);
-            this.dice2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.dice2.TabIndex = 6;
-            this.dice2.TabStop = false;
-            this.dice2.Visible = false;
+            this.pictureBoxDice2.Location = new System.Drawing.Point(57, 361);
+            this.pictureBoxDice2.Name = "pictureBoxDice2";
+            this.pictureBoxDice2.Size = new System.Drawing.Size(30, 30);
+            this.pictureBoxDice2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxDice2.TabIndex = 6;
+            this.pictureBoxDice2.TabStop = false;
+            this.pictureBoxDice2.Visible = false;
             // 
-            // player1
+            // pictureBoxPlayer1
             // 
-            this.player1.Image = global::DiceGame.Properties.Resources.p1;
-            this.player1.Location = new System.Drawing.Point(16, 286);
-            this.player1.Name = "player1";
-            this.player1.Size = new System.Drawing.Size(17, 17);
-            this.player1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.player1.TabIndex = 7;
-            this.player1.TabStop = false;
-            this.player1.Visible = false;
+            this.pictureBoxPlayer1.Image = global::DiceGame.Properties.Resources.p1;
+            this.pictureBoxPlayer1.Location = new System.Drawing.Point(16, 286);
+            this.pictureBoxPlayer1.Name = "pictureBoxPlayer1";
+            this.pictureBoxPlayer1.Size = new System.Drawing.Size(17, 17);
+            this.pictureBoxPlayer1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxPlayer1.TabIndex = 7;
+            this.pictureBoxPlayer1.TabStop = false;
+            this.pictureBoxPlayer1.Visible = false;
             // 
-            // player2
+            // pictureBoxPlayer2
             // 
-            this.player2.Image = global::DiceGame.Properties.Resources.p2;
-            this.player2.Location = new System.Drawing.Point(309, 374);
-            this.player2.Name = "player2";
-            this.player2.Size = new System.Drawing.Size(17, 17);
-            this.player2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.player2.TabIndex = 8;
-            this.player2.TabStop = false;
-            this.player2.Visible = false;
+            this.pictureBoxPlayer2.Image = global::DiceGame.Properties.Resources.p2;
+            this.pictureBoxPlayer2.Location = new System.Drawing.Point(309, 374);
+            this.pictureBoxPlayer2.Name = "pictureBoxPlayer2";
+            this.pictureBoxPlayer2.Size = new System.Drawing.Size(17, 17);
+            this.pictureBoxPlayer2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxPlayer2.TabIndex = 8;
+            this.pictureBoxPlayer2.TabStop = false;
+            this.pictureBoxPlayer2.Visible = false;
             // 
             // speedTrackBar
             // 
@@ -808,10 +808,10 @@
             this.ClientSize = new System.Drawing.Size(345, 411);
             this.Controls.Add(this.speedLabel);
             this.Controls.Add(this.speedTrackBar);
-            this.Controls.Add(this.player2);
-            this.Controls.Add(this.player1);
-            this.Controls.Add(this.dice2);
-            this.Controls.Add(this.dice1);
+            this.Controls.Add(this.pictureBoxPlayer2);
+            this.Controls.Add(this.pictureBoxPlayer1);
+            this.Controls.Add(this.pictureBoxDice2);
+            this.Controls.Add(this.pictureBoxDice1);
             this.Controls.Add(this.playerturnLabel);
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.rollButton);
@@ -819,10 +819,10 @@
             this.Name = "Main";
             this.Text = "Dice Game";
             this.Load += new System.EventHandler(this.Main_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dice1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dice2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.player1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.player2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDice1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDice2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlayer1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlayer2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.speedTrackBar)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -835,10 +835,10 @@
         private System.Windows.Forms.Button rollButton;
         private System.Windows.Forms.Button startButton;
         private System.Windows.Forms.Label playerturnLabel;
-        private System.Windows.Forms.PictureBox dice1;
-        private System.Windows.Forms.PictureBox dice2;
-        private System.Windows.Forms.PictureBox player1;
-        private System.Windows.Forms.PictureBox player2;
+        private System.Windows.Forms.PictureBox pictureBoxDice1;
+        private System.Windows.Forms.PictureBox pictureBoxDice2;
+        private System.Windows.Forms.PictureBox pictureBoxPlayer1;
+        private System.Windows.Forms.PictureBox pictureBoxPlayer2;
         private System.Windows.Forms.TrackBar speedTrackBar;
         private System.Windows.Forms.Label speedLabel;
         private System.Windows.Forms.Label label45;
