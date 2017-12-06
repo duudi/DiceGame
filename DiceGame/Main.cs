@@ -20,7 +20,7 @@ namespace DiceGame
 
         private void Main_Load(object sender, EventArgs e) // When the program has loaded
         {
-            MessageBox.Show(Message.StartMessage(), "Welcome"); // Shows a welcome message (the text is read from a text file in the Message class)
+            MessageBox.Show(Message.GetStartMessage(), "Welcome"); // Shows a welcome message (the text is read from a text file in the Message class)
             string obstaclePath = Environment.CurrentDirectory + @"\Data\obstacles.txt"; // Sets the location of the text file containing the obstacles to a variable
             ReadInObstacles(obstaclePath); // Calls the ReadInObstacles method and passes in the path of the text file
             PlaceObstacles(); // Calls the PlaceObstacles method
@@ -153,7 +153,7 @@ namespace DiceGame
         {
             if (dice1 == dice2) // If both dice have the same value
             {
-                MessageBox.Show(Message.DoubleDiceMessage()); // Tell the user they have rolled a double
+                MessageBox.Show(Message.GetDoubleDiceMessage()); // Tell the user they have rolled a double
                 return false; // Return false
             }
             else // If the dice have different values
@@ -375,7 +375,7 @@ namespace DiceGame
         private void CompletedGame() // CompletedGame method
         {
             Library.GlobalVariables.totalSpaceToMove = 0; // Set the total space left to move to 0
-            DialogResult dialogResult = MessageBox.Show(Message.WinMessage(), "Dice Game", MessageBoxButtons.YesNo); // Show a dialog with the winning player's score and the option to restart or quit the game
+            DialogResult dialogResult = MessageBox.Show(Message.GetWinMessage(), "Dice Game", MessageBoxButtons.YesNo); // Show a dialog with the winning player's score and the option to restart or quit the game
             if (dialogResult == DialogResult.Yes) // If the user wants to restart the game
             {
                 Application.Restart(); // Restart the entire application
