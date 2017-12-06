@@ -8,12 +8,15 @@ namespace DiceGame
 {
     class Message
     {
-        public static string path = Environment.CurrentDirectory + @"\Data\"; // Define a string variable called path and set it to /bin/Debug/data (where the text files are stored)
+        // Define a string variable called path and set it to /bin/Debug/data (where the text files are stored)
+        public static string path = $@"{Environment.CurrentDirectory}\Data\";
+
         public static string StartMessage() // StartMessage method
         {
             // Read in all the text from welcomemessage.txt. Return the text from messagetext.txt so it can be displayed
             return File.ReadAllText(path + "welcomemessage.txt");
         }
+
         public static string DoubleDiceMessage() // DoubleDiceMessage method
         {
             string tempText = File.ReadAllText(path + "doubledicemessage.txt"); // Read in all the text from doubledicemessage.txt into a temporary variable
@@ -33,6 +36,7 @@ namespace DiceGame
             }
 
         }
+
         public static string WinMessage() // WinMessage method
         {
             string tempText = File.ReadAllText(path + "winmessage.txt"); // Read in all the text from winmessage.txt into a temporary variable
